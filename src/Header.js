@@ -17,7 +17,7 @@ class Header extends Component {
                 this.content = 'news';
                 break;
             case '3':
-                this.content = 'for you'
+                this.content = 'for you';
                 break;
             default:
                 this.content = 'wrong page';

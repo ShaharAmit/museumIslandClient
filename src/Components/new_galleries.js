@@ -41,7 +41,6 @@ class newGalleries extends Component {
       .then((data) => {
         var self = this;
         if(data.err) {
-
         } else {
           const dataObj = data.docs;
           dataObj.map((gallerie) => {
