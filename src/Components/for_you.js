@@ -1,9 +1,8 @@
 import React, {
     Component
-  } from 'react'
+  } from 'react'  
   
-  
-  class newsByGenre extends Component {
+  class forYou extends Component {
     constructor(props) {
       super(props);
     }
@@ -11,8 +10,9 @@ import React, {
     render() {
       return ( 
         <div className='cont'>
+        
         </div >
       )
     }
   }
-  export default newsByGenre
+  export default forYou

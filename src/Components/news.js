@@ -1,8 +1,9 @@
 import React, {
     Component
-  } from 'react'  
+  } from 'react'
   
-  class search extends Component {
+  
+  class news extends Component {
     constructor(props) {
       super(props);
     }
@@ -10,9 +11,8 @@ import React, {
     render() {
       return ( 
         <div className='cont'>
-        
         </div >
       )
     }
   }
-  export default search
+  export default news

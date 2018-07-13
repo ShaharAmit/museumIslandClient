@@ -14,10 +14,10 @@ class Header extends Component {
                 this.content = 'home';
                 break;
             case '2':
-                this.content = 'books by category';
+                this.content = 'news';
                 break;
             case '3':
-                this.content = 'books by category and phone'
+                this.content = 'for you'
                 break;
             default:
                 this.content = 'wrong page';
@@ -34,11 +34,11 @@ class Header extends Component {
                 <NavItem eventKey="1" componentClass={Link} href={this.home} exact to={this.home}>
                     home
                 </NavItem>
-                <NavItem eventKey="2" componentClass={Link} href="/news" to="/borrowed_books_by_cat">
-                    books by category
+                <NavItem eventKey="2" componentClass={Link} href="/news" to="/news">
+                    news
                 </NavItem>
-                <NavItem eventKey="3" componentClass={Link} href="/search" to="/borrowed_books_by_cp">
-                    books by category and phone
+                <NavItem eventKey="3" componentClass={Link} href="/for_you" to="/for_you">
+                    for you
                 </NavItem>
             </Nav>
             </ div>

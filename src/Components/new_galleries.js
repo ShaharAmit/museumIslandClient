@@ -1,8 +1,7 @@
 import React, {
   Component
 } from 'react'
-
-
+import './includes/newGalleries.css';
 
 class newGalleries extends Component {
   constructor(props) {
@@ -55,24 +54,26 @@ class newGalleries extends Component {
   }
 
   eachGallerie(gallerie, i) {
-    // return ( 
-    //   <div className = "card" style = {{width: 18 + 'rem'}}>
-    //       <Galleries key = {'gallerie' + i} index = {i}>
-    //         <div className='GallerieCont'>
-    //           <a style="background:"></a>
-    //           <p> 
-    //             <b>gallery_name:</b > {book.author} 
-    //           </p> 
-    //         </div>
-    //       </Galleries > 
-    //   </div >
-    // )
+    return ( 
+      <div className='GalleriesCont'>
+        <button style={{
+          background: "url("+gallerie.picture+") center no-repeat",
+          width: 28+'vw',
+          height: 28+'vw',
+          backgroundSize: 'contain',
+          border: 'none',
+        }}></button>
+        <p> 
+          <b>{gallerie.gallery_name}</b > 
+        </p> 
+      </div>
+    )
   }
 
   render() {
     return ( 
       <div className = "cont" > 
-        {/* { this.state.newGalleries.map(this.eachGallerie) }  */}
+        { this.state.newGalleries.map(this.eachGallerie) } 
       </div >
     )
   }
