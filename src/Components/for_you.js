@@ -2,6 +2,7 @@ import React, {
     Component
 } from 'react'
 import './includes/newGalleries.css';
+import axios from 'axios';
 
 class forYou extends Component {
     constructor(props) {
@@ -19,8 +20,9 @@ class forYou extends Component {
                 ...prevState.newGalleries,
                 {
                     id: this.nextID(),
-                    gallery: gallerie.gallery,
                     picture: gallerie.picture,
+                    gallery: gallerie.gallery,
+
                 }
             ]
         }))
@@ -32,33 +34,17 @@ class forYou extends Component {
     }
 
     componentDidMount() {
-       const url = "https://museumisland45623.herokuapp.com/preferences";
-
-        fetch (url, {
-            method: 'post',
-            headers: {
-                "Access-Control-Allow-Origin" : "*",
-                'Content-Type': 'application/x-www-form-urlencoded',
-                'Accept': 'application/json, text/plain, *'
-            },
-            body: JSON.stringify({
-                username: 'darkboyd'
-            })
-        }).then((res) => {
-                return res.json();
-            })
-            .then((data) => {
+        const params = new URLSearchParams();
+        params.append('username', 'darkboyd');
+        axios.post('https://museumisland45623.herokuapp.com/preferences', params)
+            .then(res => {
                 var self = this;
-                if(data.err) {
-
-                } else {
-                    const dataObj = data.docs;
+                    const dataObj = res.data.docs;
                     dataObj.map((gallerie) => {
                         console.log(gallerie);
                         self.add(gallerie);
                         return true;
                     });
-                }
             })
     }
 
@@ -73,7 +59,7 @@ class forYou extends Component {
                     border: 'none',
                 }}></button>
                 <p>
-                    <b>{gallerie.gallery}</b >
+                    <a href={'https://museumisland45623.herokuapp.com/pictures' + '/' + gallerie.gallery}>{gallerie.gallery}</a>
                 </p>
             </div>
         )
