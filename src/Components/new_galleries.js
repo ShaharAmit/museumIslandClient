@@ -2,6 +2,7 @@ import React, {
   Component
 } from 'react'
 import './includes/newGalleries.css';
+import { Link, Router } from "react-router-dom";
 
 class newGalleries extends Component {
   constructor(props) {
@@ -10,17 +11,19 @@ class newGalleries extends Component {
       newGalleries: []
     }
     this.add = this.add.bind(this)
+    this.moveToGallery = this.moveToGallery.bind(this)
     this.nextID = this.nextID.bind(this)
+    this.eachGallery = this.eachGallery.bind(this)
   }
 
-  add(gallerie) {
+  add(gallery) {
     this.setState(prevState => ({
       newGalleries: [
         ...prevState.newGalleries,
         {
           id: this.nextID(),
-          gallery_name: gallerie.gallery_name,
-          picture: gallerie.picture,
+          gallery_name: gallery.gallery_name,
+          picture: gallery.picture,
         }
       ]
     }))
@@ -44,27 +47,31 @@ class newGalleries extends Component {
 
         } else {
           const dataObj = data.docs;
-          dataObj.map((gallerie) => {
-            console.log(gallerie);
-            self.add(gallerie);
+          dataObj.map((gallery) => {
+            console.log(gallery);
+            self.add(gallery);
             return true;
           });
         }
       })
   }
 
-  eachGallerie(gallerie, i) {
+  moveToGallery(gallerieName) {
+    // browserHistory.push('/gallery_by_name/'+gallerieName)
+  }
+
+  eachGallery(gallery, i) {
     return ( 
       <div className='GalleriesCont'>
-        <button style={{
-          background: "url("+gallerie.picture+") center no-repeat",
-          width: 28+'vw',
-          height: 28+'vw',
+        <div style={{
+          background: "url("+gallery.picture+") center no-repeat",
           backgroundSize: 'contain',
           border: 'none',
-        }}></button>
+        }}>
+          <Link to={"/gallery_by_name/"+gallery.gallery_name} />
+        </div>
         <p> 
-          <b>{gallerie.gallery_name}</b > 
+          <b>{gallery.gallery_name}</b > 
         </p> 
       </div>
     )
@@ -73,7 +80,7 @@ class newGalleries extends Component {
   render() {
     return ( 
       <div className = "cont" > 
-        { this.state.newGalleries.map(this.eachGallerie) } 
+        { this.state.newGalleries.map(this.eachGallery) } 
       </div >
     )
   }

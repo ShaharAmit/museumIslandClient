@@ -5,3 +5,14 @@
     text-align: center;
     margin: 1%;
 }
+
+.GalleriesCont > div {
+    width: 28vw;
+    height: 28vw;
+}
+
+.GalleriesCont > div > a{
+    display: block;
+    width: 28vw;
+    height: 28vw;
+}
