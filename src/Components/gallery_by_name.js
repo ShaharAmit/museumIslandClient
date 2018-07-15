@@ -17,19 +17,24 @@ import {Redirect} from 'react-router-dom'
     }
 
     add(image) {
+        let hasPic = false;
         this.state.newGalleries.forEach(obj => {
-            console.log(obj);
+            if(obj.picture === image) {
+                hasPic = true;
+                return;
+            }
         });
-        this.setState(prevState => ({
-            newGalleries: [
-                ...prevState.newGalleries,
-                {
-                    id: this.nextID(),
-                    picture: image,
-                }
-            ]
-        }))
-        console.log(this.state.newGalleries);
+        if(!hasPic) {
+            this.setState(prevState => ({
+                newGalleries: [
+                    ...prevState.newGalleries,
+                    {
+                        id: this.nextID(),
+                        picture: image,
+                    }
+                ]
+            }))
+        }
     }
 
     nextID() {
@@ -83,7 +88,8 @@ import {Redirect} from 'react-router-dom'
                 const secUrl = 'https://museumisland45623.herokuapp.com/get_all_gallery_pictures/'+this.gallery;
                 getReq(secUrl).then(data => {
                     if(data) {
-                        dataObj.map((image) => {
+                        const picturesObj = data.pictures;
+                        picturesObj.map((image) => {
                             self.add(image);
                             return true;
                         });
