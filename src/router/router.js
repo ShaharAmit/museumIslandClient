@@ -4,6 +4,7 @@ import newGalleries from "../Components/new_galleries";
 import news from "../Components/news";
 import forYou from "../Components/for_you";
 import galleryByName from "../Components/gallery_by_name";
+import ArtistByGal from "../Components/get_artist_by_gallery";
 import Header from "../Header";
 
 const ReactRouter =()=>{
@@ -15,6 +16,8 @@ const ReactRouter =()=>{
             <Route  path="/for_you" component={forYou} />
             <Route  path="/gallery_by_name/:gallery_name" component={galleryByName} />
             <Route  path="/all_pictures_by_gallery/:gallery_name" component={galleryByName} />
+            <Route  path="/get_artist_by_gallery/:gallery_name" component={ArtistByGal} />
+
         </React.Fragment>
     );}
 

@@ -2,7 +2,7 @@ import React, {
     Component
   } from 'react'
 import { getReq, postReq } from './httpsRequests'
-import {Redirect} from 'react-router-dom'
+import { Link } from 'react-router-dom'
   
   class galleryByName extends Component {
     constructor(props) {
@@ -109,8 +109,8 @@ import {Redirect} from 'react-router-dom'
             { this.state.newGalleries.map(this.eachGallery) }
             <button onClick={this.checkPaid} className='watchFullGal'></button>
             {/* <Link className='seeArtist'></Link>
-            <Link className='watchGalMuseum'></Link>
-            <Link to={"/gallery_by_name/"+gallery.gallery_name} /> */}
+            <Link className='watchGalMuseum'></Link> */}
+            <Link to={"/get_artist_by_gallery/"+this.gallery} className='seeArtist' style={{width: 20+'px', height: 20+'px', display: 'block'}}/>
 
         </div >
       )
