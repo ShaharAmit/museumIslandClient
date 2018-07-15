@@ -1,25 +1,60 @@
 import React from 'react';
 import axios from 'axios';
-import Header from "./museumHeader";
 import './includes/museum.css';
 import { Link } from "react-router-dom";
+import { getReq } from './httpsRequests';
 
 export default class museum extends React.Component {
-    state = {
-        gallery: [],
+    constructor(props) {
+        super(props);
+        this.state = {
+            exhibitions: []
+        }
+        this.add = this.add.bind(this)
+        this.nextID = this.nextID.bind(this)
+        this.gallery = this.props.match.params.gallery;
     }
+
+    add(exhibition) {
+        this.setState(prevState => ({
+            exhibitions: [
+                ...prevState.exhibitions,
+                {
+                    id: this.nextID(),
+                    picture: exhibition.picture,
+                    gallery_name: exhibition.gallery,
+
+                }
+            ]
+        }))
+    }
+
+    nextID() {
+        this.uniqueId = this.uniqueId || 0
+        return this.uniqueId++
+    }
+
     componentDidMount() {
-        axios.get(`https://museumisland45623.herokuapp.com/museum/`+this.props.match.params.gallery)
-            .then(res => {
-                const gallery = res.data.docs;
-                this.setState({ gallery });
-            })
+        const url = `https://museumisland45623.herokuapp.com/museum/`+this.gallery,
+        self = this;
+
+        getReq(url).then(dataObj => {
+            if(dataObj) {
+              dataObj.map((museum) => {
+                self.add(museum);
+                console.log(museum)
+                return true;
+              });
+            } else {
+              //think of an error
+            }
+          })
     }
 
     exhibitions() {
         return (
             <div className='ExhibitionsCont'>
-            
+
             </div>
         )
     }
@@ -28,12 +63,13 @@ export default class museum extends React.Component {
         return (
             <div className='cont'> 
                 <div className='header'>
+                <Link to={'/museum/'+this.gallery}>Exhibitions</Link>
                 <Link to="/galleries">artists</Link>
                 <Link to="/articles">store</Link>
                 </div>
                 <div className="museumItems">
                     {
-                        this.state.gallery.map((this.exhibitions))
+                        this.state.exhibitions.map((this.exhibitions))
                     }
                 </div>
             </div>

@@ -1,6 +1,5 @@
 import React from 'react';
 import axios from 'axios';
-import Header from "./museumHeader";
 import './includes/museum.css';
 
 export default class museumGalleries extends React.Component {
