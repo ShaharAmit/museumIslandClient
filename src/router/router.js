@@ -1,5 +1,5 @@
 import React from "react";
-import { Route } from "react-router-dom";
+import { Route, Redirect } from "react-router-dom";
 import newGalleries from "../Components/new_galleries";
 import news from "../Components/news";
 import forYou from "../Components/for_you";
@@ -9,6 +9,7 @@ import museum from "../Components/museum";
 import museumGalleries from "../Components/museumGalleries";
 import museumArtists from "../Components/museum_artists";
 import getItems from "../Components/get_items_by_gallery";
+import login from "../Components/login";
 import Header from "../Header";
 
 const ReactRouter =()=>{
@@ -16,6 +17,7 @@ const ReactRouter =()=>{
         <React.Fragment>
             <Header />
             <Route exact path="/" component={newGalleries} />
+            <Route exact path="/login" component={login} />
             <Route  path="/news" component={news} />
             <Route  path="/for_you" component={forYou} />
             <Route  path="/gallery_by_name/:gallery_name" component={galleryByName} />

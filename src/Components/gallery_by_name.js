@@ -3,6 +3,7 @@ import React, {
   } from 'react'
 import { getReq, postReq } from './httpsRequests'
 import Header from './exhibitionHeader'
+import {checkLogin} from './checkLoggedIn'
   
   class galleryByName extends Component {
     constructor(props) {
@@ -14,6 +15,8 @@ import Header from './exhibitionHeader'
         this.checkPaid = this.checkPaid.bind(this)
         this.nextID = this.nextID.bind(this)
         this.gallery = this.props.match.params.gallery_name;
+        this.username = sessionStorage.getItem("username");
+        checkLogin();
     }
 
     add(image) {
@@ -80,7 +83,7 @@ import Header from './exhibitionHeader'
         const params = new URLSearchParams(),
         url = 'https://museumisland45623.herokuapp.com/check_paid_galleries',
         self = this;
-        params.append('username', 'darkboyd');
+        params.append('username', this.username);
         params.append('gallery', this.gallery)
         postReq(url, params).then(dataObj => {
             if(dataObj) {

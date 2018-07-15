@@ -15,6 +15,7 @@ class forYou extends Component {
         }
         this.add = this.add.bind(this)
         this.nextID = this.nextID.bind(this)
+        this.username = sessionStorage.getItem("username");
     }
 
     add(gallery) {
@@ -40,7 +41,7 @@ class forYou extends Component {
         const params = new URLSearchParams(),
         url = 'https://museumisland45623.herokuapp.com/preferences',
         self = this;
-        params.append('username', 'darkboyd');
+        params.append('username', this.username);
         postReq(url,params).then(dataObj => {
           if(dataObj) {
             dataObj.map((gallery) => {

@@ -63,7 +63,6 @@ import Header from './museumHeader'
               backgroundSize: 'contain',
               border: 'none',
             }}>
-              {/* <Link to={"/gallery_by_name/"+gallery.gallery_name} /> */}
             </div>
             <p> 
               <b>{data.name}</b > 
