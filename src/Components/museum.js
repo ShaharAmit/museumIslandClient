@@ -3,6 +3,8 @@ import axios from 'axios';
 import './includes/museum.css';
 import { Link } from "react-router-dom";
 import { getReq } from './httpsRequests';
+import Header from './museumHeader'
+
 
 export default class museum extends React.Component {
     constructor(props) {
@@ -62,11 +64,7 @@ export default class museum extends React.Component {
     render() {
         return (
             <div className='cont'> 
-                <div className='header'>
-                <Link to={'/museum/'+this.gallery}>Exhibitions</Link>
-                <Link to="/galleries">artists</Link>
-                <Link to="/articles">store</Link>
-                </div>
+                <Header selected='1' gallery={this.gallery} />
                 <div className="museumItems">
                     {
                         this.state.exhibitions.map((this.exhibitions))
