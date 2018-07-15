@@ -3,7 +3,7 @@ import { Route } from "react-router-dom";
 import newGalleries from "../Components/new_galleries";
 import news from "../Components/news";
 import forYou from "../Components/for_you";
-import gallery_pictures from "../Components/galleryPictures";
+import galleryByName from "../Components/gallery_by_name";
 import Header from "../Header";
 
 const ReactRouter =()=>{
@@ -13,7 +13,8 @@ const ReactRouter =()=>{
             <Route exact path="/" component={newGalleries} />
             <Route  path="/news" component={news} />
             <Route  path="/for_you" component={forYou} />
-            <Route  path="/pictures/:gallery" component={gallery_pictures} />
+            <Route  path="/gallery_by_name/:gallery_name" component={galleryByName} />
+            <Route  path="/all_pictures_by_gallery/:gallery_name" component={galleryByName} />
         </React.Fragment>
     );}
 

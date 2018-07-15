@@ -2,7 +2,9 @@ import React, {
     Component
 } from 'react'
 import './includes/newGalleries.css';
-import axios from 'axios';
+import { Link } from "react-router-dom";
+import { postReq } from './httpsRequests';
+
 
 class forYou extends Component {
     constructor(props) {
@@ -14,14 +16,14 @@ class forYou extends Component {
         this.nextID = this.nextID.bind(this)
     }
 
-    add(gallerie) {
+    add(gallery) {
         this.setState(prevState => ({
             newGalleries: [
                 ...prevState.newGalleries,
                 {
                     id: this.nextID(),
-                    picture: gallerie.picture,
-                    gallery: gallerie.gallery,
+                    picture: gallery.picture,
+                    gallery_name: gallery.gallery,
 
                 }
             ]
@@ -34,41 +36,44 @@ class forYou extends Component {
     }
 
     componentDidMount() {
-        const params = new URLSearchParams();
+        const params = new URLSearchParams(),
+        url = 'https://museumisland45623.herokuapp.com/preferences',
+        self = this;
         params.append('username', 'darkboyd');
-        axios.post('https://museumisland45623.herokuapp.com/preferences', params)
-            .then(res => {
-                var self = this;
-                    const dataObj = res.data.docs;
-                    dataObj.map((gallerie) => {
-                        console.log(gallerie);
-                        self.add(gallerie);
-                        return true;
-                    });
-            })
+        postReq(url,params).then(dataObj => {
+          if(dataObj) {
+            dataObj.map((gallery) => {
+              self.add(gallery);
+              console.log(gallery)
+              return true;
+            });
+          } else {
+            //think of an error
+          }
+        })
     }
 
-    eachGallerie(gallerie, i) {
+    eachGallery(gallery, i) {
         return (
             <div className='GalleriesCont'>
-                <button style={{
-                    background: "url("+gallerie.picture+") center no-repeat",
-                    width: 28+'vw',
-                    height: 28+'vw',
-                    backgroundSize: 'contain',
-                    border: 'none',
-                }}></button>
-                <p>
-                    <a href={'http://localhost:3000/pictures' + '/' + gallerie.gallery}>{gallerie.gallery}</a>
-                </p>
+            <div style={{
+              background: "url("+gallery.picture+") center no-repeat",
+              backgroundSize: 'contain',
+              border: 'none',
+            }}>
+              <Link to={"/gallery_by_name/"+gallery.gallery_name} />
             </div>
+            <p> 
+              <b>{gallery.gallery_name}</b > 
+            </p> 
+          </div>
         )
     }
 
     render() {
         return (
             <div className = "cont" >
-                { this.state.newGalleries.map(this.eachGallerie) }
+                { this.state.newGalleries.map(this.eachGallery) }
             </div >
         )
     }

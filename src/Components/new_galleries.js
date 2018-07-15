@@ -2,7 +2,8 @@ import React, {
   Component
 } from 'react'
 import './includes/newGalleries.css';
-import { Link, Router } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { getReq } from './httpsRequests';
 
 class newGalleries extends Component {
   constructor(props) {
@@ -35,24 +36,21 @@ class newGalleries extends Component {
   }
 
   componentDidMount() {
-    const url =
-      "https://museumisland45623.herokuapp.com/get_galleries";
-    fetch(url)
-      .then((res) => {
-        return res.json();
-      })
-      .then((data) => {
-        var self = this;
-        if(data.err) {
-        } else {
-          const dataObj = data.docs;
-          dataObj.map((gallery) => {
-            console.log(gallery);
-            self.add(gallery);
-            return true;
-          });
-        }
-      })
+    const url = "https://museumisland45623.herokuapp.com/get_galleries",
+    self = this;
+    getReq(url).then((dataObj) => {
+      if(dataObj) {
+        dataObj.map((gallery) => {
+          console.log(gallery);
+          self.add(gallery);
+          return true;
+        });
+      } else {
+        //think of an error
+      }
+    }).catch(err => {
+      //think of an error
+    })
   }
 
   moveToGallery(gallerieName) {
