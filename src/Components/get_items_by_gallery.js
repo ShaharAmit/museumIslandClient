@@ -2,31 +2,31 @@ import React, {
     Component
   } from 'react'
 import { getReq, postReq } from './httpsRequests'
-import { Link } from 'react-router-dom'
-import Header from './exhibitionHeader'
+import Header from './museumHeader'
   
-  class ArtistByGal extends Component {
+  class getItems extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            artists: []
+            items: []
         }
         this.add = this.add.bind(this)
         this.nextID = this.nextID.bind(this)
         this.gallery = this.props.match.params.gallery_name;
     }
 
-    add(data) {
+    add(item) {
+        console.log(item);
         this.setState(prevState => ({
-            artists: [
-                ...prevState.artists,
+            items: [
+                ...prevState.items,
                 {
                     id: this.nextID(),
-                    picture: data.picture,
-                    about: data.about,
-                    name: data.name,
-                    museums: data.museums,
-                    galleries: data.galleries
+                    picture: item.picture,
+                    name: item.name,
+                    price: item.price,
+                    genre: item.genre,
+                    description: item.description
                 }
             ]            
         }))
@@ -38,12 +38,13 @@ import Header from './exhibitionHeader'
     }
 
     componentDidMount() {
-        const url = 'https://museumisland45623.herokuapp.com/get_artist/'+this.gallery,
+        const url = 'https://museumisland45623.herokuapp.com/get_items/'+this.gallery,
         self = this;
         getReq(url).then(dataObj => {
             if(dataObj) {
-                dataObj.map((data) => {
-                self.add(data);
+                const items = dataObj.items_for_sale;
+                items.map((item) => {
+                self.add(item);
                 return true;
                 });
             } else {
@@ -54,7 +55,7 @@ import Header from './exhibitionHeader'
         })
     }
 
-    eachGallery(data, i) {
+    eachItems(data, i) {
         return (
             <div className='GalleriesCont'>
             <div style={{
@@ -74,10 +75,10 @@ import Header from './exhibitionHeader'
     render() {
       return ( 
         <div className='cont'>
-            <Header selected='2' gallery={this.gallery} />
-            { this.state.artists.map(this.eachGallery) }
+            <Header selected='3' gallery={this.gallery} />
+            { this.state.items.map(this.eachItems) }
         </div >
       )
     }
   }
-  export default ArtistByGal
+  export default getItems

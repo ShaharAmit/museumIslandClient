@@ -7,7 +7,8 @@ import galleryByName from "../Components/gallery_by_name";
 import ArtistByGal from "../Components/get_artist_by_gallery";
 import museum from "../Components/museum";
 import museumGalleries from "../Components/museumGalleries";
-import museumArticles from "../Components/museumArticles";
+import museumArtists from "../Components/museum_artists";
+import getItems from "../Components/get_items_by_gallery";
 import Header from "../Header";
 
 const ReactRouter =()=>{
@@ -21,6 +22,8 @@ const ReactRouter =()=>{
             <Route  path="/all_pictures_by_gallery/:gallery_name" component={galleryByName} />
             <Route  path="/get_artist_by_gallery/:gallery_name" component={ArtistByGal} />
             <Route  path="/museum/:gallery" component={museum} />
+            <Route  path="/museum_artists/:gallery" component={museumArtists} />
+            <Route  path="/get_items_by_gallery/:gallery_name" component={getItems} />
         </React.Fragment>
     );}
 

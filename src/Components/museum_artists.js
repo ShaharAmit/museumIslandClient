@@ -1,30 +1,31 @@
 import React from 'react';
 import axios from 'axios';
-import './includes/museum.css';
+import './includes/museum_artist.css';
 import { Link } from "react-router-dom";
 import { getReq } from './httpsRequests';
 import Header from './museumHeader'
 
 
-export default class museum extends React.Component {
+export default class museumArtists extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            exhibitions: []
+            artists: []
         }
         this.add = this.add.bind(this)
         this.nextID = this.nextID.bind(this)
         this.gallery = this.props.match.params.gallery;
     }
 
-    add(exhibition, pic) {
+    add(gallery, artist) {
         this.setState(prevState => ({
-            exhibitions: [
-                ...prevState.exhibitions,
+            artists: [
+                ...prevState.artists,
                 {
                     id: this.nextID(),
-                    picture: pic,
-                    gallery_name: exhibition,
+                    gallery_name: gallery,
+                    picture: artist.picture,
+                    artist_name: artist.name,
 
                 }
             ]
@@ -44,11 +45,14 @@ export default class museum extends React.Component {
             if(dataObj) {
                 const data = dataObj.galleries;
                 data.map((gallery) => {
-                    const galUrl = `https://museumisland45623.herokuapp.com/get_gallery_pic/`+gallery;
-                    getReq(galUrl).then(galleryPic => {
-                        if(galleryPic) {
-                            self.add(gallery,galleryPic.picture);
+                    const artistUrl = `https://museumisland45623.herokuapp.com/get_artist/`+gallery;
+                    getReq(artistUrl).then(artistsObj =>  {
+                        if(artistsObj) {
+                            artistsObj.map((artist) => {
+                                self.add(gallery,artist);
+                            })
                         }
+                    
                     })
                     return true;
                 });
@@ -58,18 +62,19 @@ export default class museum extends React.Component {
           })
     }
 
-    exhibitions(exhibition,i) {
+    artists(artist,i) {
+        console.log(artist)
         return (
-            <div className='ExhibitionsCont'>
+            <div className='artistCont'>
                 <div style={{
-                    background: "url("+exhibition.picture+") center no-repeat",
+                    background: "url("+artist.picture+") center no-repeat",
                     backgroundSize: 'contain',
                     border: 'none',
                     }}>
-                    <Link to={"/gallery_by_name/"+exhibition.gallery_name} />
+                    <Link to={"/get_artist_by_gallery/"+artist.gallery_name} />
                 </div>
                 <p> 
-                    <b>{exhibition.gallery_name}</b > 
+                    <b>{artist.artist_name}</b > 
                 </p> 
             </div>
         )
@@ -78,10 +83,10 @@ export default class museum extends React.Component {
     render() {
         return (
             <div className='cont'> 
-                <Header selected='1' gallery={this.gallery} />
+                <Header selected='2' gallery={this.gallery} />
                 <div className="museumItems">
                     {
-                        this.state.exhibitions.map((this.exhibitions))
+                        this.state.artists.map((this.artists))
                     }
                 </div>
             </div>

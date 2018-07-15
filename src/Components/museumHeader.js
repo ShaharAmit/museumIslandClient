@@ -13,13 +13,13 @@ class Header extends Component {
             <a className="appIcon" componentClass={Link} href={this.home} exact to={this.home} eventKey="1"></a>
             <h1>{this.content}</h1>
             <Nav bsStyle="tabs" activeKey={this.navSelected}>        
-                <NavItem eventKey="1" componentClass={Link} href={'/museum/'+this.gallery} exact to={'/museum/'+this.gallery}>
+                <NavItem eventKey="1" componentClass={Link} href={'/museum/'+this.gallery} to={'/museum/'+this.gallery}>
                     Exhibitions
                 </NavItem>
-                <NavItem eventKey="2" componentClass={Link} href="/news" to="/news">
+                <NavItem eventKey="2" componentClass={Link} href={"/museum_artists/"+this.gallery} to={"/museum_artists/"+this.gallery}>
                     artists
                 </NavItem>
-                <NavItem eventKey="3" componentClass={Link} href="/for_you" to="/for_you">
+                <NavItem eventKey="3" componentClass={Link} href={"/get_items_by_gallery/"+this.gallery} to={"/get_items_by_gallery/"+this.gallery}>
                     store
                 </NavItem>
             </Nav>

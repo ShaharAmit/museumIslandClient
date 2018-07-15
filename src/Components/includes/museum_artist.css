@@ -1,4 +1,4 @@
-.ExhibitionsCont {
+.artistCont {
     width: 31.3vw;
     height: 31.3vw;
     display: inline-block;
@@ -6,12 +6,12 @@
     margin: 1%;
 }
 
-.ExhibitionsCont > div {
+.artistCont > div {
     width: 28vw;
     height: 28vw;
 }
 
-.ExhibitionsCont > div > a{
+.artistCont > div > a{
     display: block;
     width: 28vw;
     height: 28vw;

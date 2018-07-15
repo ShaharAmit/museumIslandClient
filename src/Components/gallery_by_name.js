@@ -62,16 +62,16 @@ import Header from './exhibitionHeader'
     eachGallery(gallery, i) {
         return (
             <div className='GalleriesCont'>
-            <div style={{
-              background: "url("+gallery.picture+") center no-repeat",
-              backgroundSize: 'contain',
-              border: 'none',
-            }}>
-              {/* <Link to={"/gallery_by_name/"+gallery.gallery_name} /> */}
-            </div>
-            <p> 
-              <b>{gallery.gallery_name}</b > 
-            </p> 
+                <div style={{
+                background: "url("+gallery.picture+") center no-repeat",
+                backgroundSize: 'contain',
+                border: 'none',
+                }}>
+                {/* <Link to={"/gallery_by_name/"+gallery.gallery_name} /> */}
+                </div>
+                <p> 
+                <b>{gallery.gallery_name}</b > 
+                </p> 
           </div>
         )
     }
@@ -83,7 +83,6 @@ import Header from './exhibitionHeader'
         params.append('username', 'darkboyd');
         params.append('gallery', this.gallery)
         postReq(url, params).then(dataObj => {
-            console.log(dataObj);
             if(dataObj) {
                 const secUrl = 'https://museumisland45623.herokuapp.com/get_all_gallery_pictures/'+this.gallery;
                 getReq(secUrl).then(data => {
