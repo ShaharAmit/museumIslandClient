@@ -1,7 +1,7 @@
 import React, {
     Component
   } from 'react'
-  
+  import Header from './mainHeader'
   
   class news extends Component {
     constructor(props) {
@@ -11,6 +11,7 @@ import React, {
     render() {
       return ( 
         <div className='cont'>
+        <Header />
         </div >
       )
     }

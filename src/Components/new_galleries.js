@@ -4,6 +4,7 @@ import React, {
 import './includes/newGalleries.css';
 import { Link } from "react-router-dom";
 import { getReq } from './httpsRequests';
+import Header from './mainHeader'
 
 class newGalleries extends Component {
   constructor(props) {
@@ -77,6 +78,7 @@ class newGalleries extends Component {
   render() {
     return ( 
       <div className = "cont" > 
+        <Header />
         { this.state.newGalleries.map(this.eachGallery) } 
       </div >
     )

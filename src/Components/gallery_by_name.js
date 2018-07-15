@@ -2,7 +2,7 @@ import React, {
     Component
   } from 'react'
 import { getReq, postReq } from './httpsRequests'
-import { Link } from 'react-router-dom'
+import Header from './exhibitionHeader'
   
   class galleryByName extends Component {
     constructor(props) {
@@ -106,12 +106,9 @@ import { Link } from 'react-router-dom'
     render() {
       return ( 
         <div className='cont'>
+            <Header selected='1' gallery={this.gallery} />
             { this.state.newGalleries.map(this.eachGallery) }
             <button onClick={this.checkPaid} className='watchFullGal'></button>
-            {/* <Link className='seeArtist'></Link>
-            <Link className='watchGalMuseum'></Link> */}
-            <Link to={"/get_artist_by_gallery/"+this.gallery} className='seeArtist' style={{width: 20+'px', height: 20+'px', display: 'block'}}/>
-
         </div >
       )
     }

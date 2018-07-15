@@ -4,6 +4,7 @@ import React, {
 import './includes/newGalleries.css';
 import { Link } from "react-router-dom";
 import { postReq } from './httpsRequests';
+import Header from './mainHeader'
 
 
 class forYou extends Component {
@@ -73,6 +74,7 @@ class forYou extends Component {
     render() {
         return (
             <div className = "cont" >
+              <Header />
                 { this.state.newGalleries.map(this.eachGallery) }
             </div >
         )
