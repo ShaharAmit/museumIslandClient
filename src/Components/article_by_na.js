@@ -2,8 +2,6 @@ import React, {
     Component
   } from 'react'
 import { postReq } from '../services/httpsRequests'
-import Header from './headers/exhibitionHeader'
-
   
 class ArticleByNA extends Component {
     constructor(props) {
@@ -61,7 +59,7 @@ class ArticleByNA extends Component {
 
     eachGallery(data, i) {
         return (
-            <div className='GalleriesCont'>
+            <div className={'GalleriesCont'+i}>
             <div style={{
               background: "url("+data.picture+") center no-repeat",
               backgroundSize: 'contain',

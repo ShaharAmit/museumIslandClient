@@ -1,7 +1,7 @@
 import React, {
     Component
   } from 'react'
-import { getReq, postReq } from '../services/httpsRequests'
+import { getReq } from '../services/httpsRequests'
 import Header from './headers/museumHeader'
 import { checkLogin } from '../services/checkLoggedIn';
 import BuyItem from './secondery/buy_item'
@@ -62,7 +62,7 @@ import BuyItem from './secondery/buy_item'
 
     eachItems(data, i) {
         return (
-            <div className='GalleriesCont'>
+            <div className={'GalleriesCont'+i}>
             <div style={{
               background: "url("+data.picture+") center no-repeat",
               backgroundSize: 'contain',

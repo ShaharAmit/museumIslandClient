@@ -1,5 +1,5 @@
 import React from 'react';
-import './includes/museum.css';
+import './includes/all.css';
 import { Link } from "react-router-dom";
 import { getReq } from '../services/httpsRequests';
 import Header from './headers/museumHeader'

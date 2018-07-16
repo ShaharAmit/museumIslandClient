@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import {Nav, NavItem} from "react-bootstrap"
 import './Header.css';
 
 class Header extends Component {
@@ -11,20 +10,18 @@ class Header extends Component {
     logout() {
         sessionStorage.setItem("username", "");
         sessionStorage.clear();
-        window.location = "http://localhost:3000/login";
+        var d = new Date();
+        d.setTime(d.getTime() + (-2 * 24 * 60 * 60 * 1000));
+        var expires = "expires="+d.toUTCString();
+        document.cookie = 'username' + "=" + '' + ";" + expires + ";path=/";
+            window.location = "/login"; 
     }
     render() {
         return (
             <div className="headerCont">
             <Link className="appIcon" to={this.home} />
-            <Nav bsStyle="tabs" activeKey="1">   
-                <NavItem eventKey="1" componentClass={Link} href={'/profile'} to={'/profile'}>     
-                    Profile
-                </NavItem>
-                <button onClick={this.logout}>     
-                    logout
-                </button>
-            </Nav>
+            <Link to={'/profile'} className={'profile'}></Link>
+            <button onClick={this.logout}>Logout</button>
             </ div>
         );
     }

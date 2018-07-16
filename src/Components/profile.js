@@ -1,8 +1,7 @@
 import React, {
     Component
   } from 'react'
-  import './includes/newsByGenre.css';
-  import { Link } from "react-router-dom";
+  import './includes/all.css';
   import { postReq } from '../services/httpsRequests';
   import Header from './headers/mainHeader'
   import { checkLogin } from '../services/checkLoggedIn';
@@ -19,43 +18,29 @@ class Profile extends Component {
   
     componentDidMount() {
         const params = new URLSearchParams(),
-        url = "https://museumisland45623.herokuapp.com/get_user_data";
+        url = "https://museumisland45623.herokuapp.com/get_user_data",
+        self=this;
 
         params.append('username', this.username);
         postReq(url,params).then(dataObj => {
           if(dataObj) {
-              console.log(dataObj);
-            // dataObj.map((user) => {
-              
-            // });
+              self.setState({
+                paid_galleries: dataObj.paid_galleries,
+                preferences: dataObj.preferences,
+                purchases: dataObj.purchases,
+                discounts_museums: dataObj.discounts_museums
+              })
           } else {
             //think of an error
           }
         })
     }
   
-    eachArticle(article, i) {
-      return ( 
-        <div className='articlesCont'>
-          <div style={{
-            background: "url("+article.picture+") center no-repeat",
-            backgroundSize: 'contain',
-            border: 'none',
-          }}>
-            {/* <Link to={"/article_by_name/"+article.article_name+'/'+article.author} /> */}
-          </div>
-          <p> 
-            <b>{article.article_name}</b > 
-          </p> 
-        </div>
-      )
-    }
-  
     render() {
       return ( 
         <div className = "cont" > 
           <Header />
-          {/* { this.state.newArticles.map(this.eachArticle) }  */}
+          
         </div >
       )
     }

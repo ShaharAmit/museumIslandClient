@@ -29,8 +29,7 @@ class SeeMore extends Component {
 
     checkPaid() {
         const params = new URLSearchParams(),
-        url = 'https://museumisland45623.herokuapp.com/check_paid_galleries',
-        self = this;
+        url = 'https://museumisland45623.herokuapp.com/check_paid_galleries';
         params.append('username', this.username);
         params.append('gallery', this.gallery)
         postReq(url, params).then(dataObj => {
@@ -97,9 +96,9 @@ class SeeMore extends Component {
     renderUI() {
         return (
             <div className='seeMore'>
-            <button onClick={this.checkPaid} onClick={this.seeMore}>see more</button>
+            <button onClick={this.seeMore}>see more</button>
             </div>
-        );
+        )
     }
 
 

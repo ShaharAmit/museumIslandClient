@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Redirect } from "react-router-dom";
+import { Route } from "react-router-dom";
 import newGalleries from "../Components/new_galleries";
 import forYou from "../Components/for_you";
 import galleryByName from "../Components/gallery_by_name";

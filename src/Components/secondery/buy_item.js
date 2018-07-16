@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import { getReq, postReq } from '../../services/httpsRequests'
+import { postReq } from '../../services/httpsRequests'
 
 
 class SeeMore extends Component {
@@ -14,7 +14,7 @@ class SeeMore extends Component {
   }
 
     buy() {
-        const url = 'http://localhost:3000/add_paid_object',
+        const url = 'https://museumisland45623.herokuapp.com/add_paid_object',
         params = new URLSearchParams();
         params.append('username',this.username);
         params.append('item',this.item);
@@ -32,7 +32,7 @@ class SeeMore extends Component {
 
     render() {
         return (
-            <button onClick={this.checkPaid} onClick={this.buy}>buy item for {this.price}$</button>
+            <button onClick={this.buy}>buy item for {this.price}$</button>
         )
     }
 }

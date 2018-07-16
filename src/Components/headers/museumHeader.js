@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import {Nav, NavItem} from "react-bootstrap"
 import '../../Header.css';
 
 class Header extends Component {
@@ -9,19 +8,17 @@ class Header extends Component {
       
     render() {
         return (
-            <div className="headerCont">
+            <div className="headerCont2">
             <h1>{this.content}</h1>
-            <Nav bsStyle="tabs" activeKey={this.navSelected}>        
-                <NavItem eventKey="1" componentClass={Link} href={'/museum/'+this.gallery} to={'/museum/'+this.gallery}>
+                <Link to={'/museum/'+this.gallery}>
                     Exhibitions
-                </NavItem>
-                <NavItem eventKey="2" componentClass={Link} href={"/museum_artists/"+this.gallery} to={"/museum_artists/"+this.gallery}>
+                </Link>
+                <Link to={"/museum_artists/"+this.gallery}>
                     artists
-                </NavItem>
-                <NavItem eventKey="3" componentClass={Link} href={"/get_items_by_gallery/"+this.gallery} to={"/get_items_by_gallery/"+this.gallery}>
+                </Link>
+                <Link to={"/get_items_by_gallery/"+this.gallery}>
                     store
-                </NavItem>
-            </Nav>
+                </Link>
             </ div>
         );
     }

@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import {Nav, NavItem} from "react-bootstrap"
 import '../../Header.css';
 
 class Header extends Component {
@@ -24,16 +23,14 @@ class Header extends Component {
       
     render() {
         return (
-            <div className="headerCont">
+            <div className="headerCont2">
             <h1>{this.content}</h1>
-            <Nav bsStyle="tabs" activeKey={this.navSelected} onSelect={k => this.handleSelect(k)}>        
-                <NavItem eventKey="2" componentClass={Link} href="/news_by_genre" to="/news_by_genre">
+                <Link eventKey="2" componentClass={Link} href="/news_by_genre" to="/news_by_genre">
                     News
-                </NavItem>
-                <NavItem eventKey="3" componentClass={Link} href="/for_you" to="/for_you">
+                </Link>
+                <Link eventKey="3" componentClass={Link} href="/for_you" to="/for_you">
                     For You
-                </NavItem>
-            </Nav>
+                </Link>
             </ div>
         );
     }

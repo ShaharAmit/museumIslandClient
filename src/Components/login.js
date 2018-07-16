@@ -1,12 +1,10 @@
 import React, {
     Component
   } from 'react'
-  import './includes/newGalleries.css';
   import { Redirect } from 'react-router-dom'
   import { GoogleLogin } from 'react-google-login';
   import { postReq } from '../services/httpsRequests'; 
 
-  
   class newGalleries extends Component {
     constructor(props) {
         super(props);
@@ -29,10 +27,10 @@ import React, {
         var ca = document.cookie.split(';');
         for(var i = 0; i < ca.length; i++) {
             var c = ca[i];
-            while (c.charAt(0) == ' ') {
+            while (c.charAt(0) === ' ') {
                 c = c.substring(1);
             }
-            if (c.indexOf(name) == 0) {
+            if (c.indexOf(name) === 0) {
                 return c.substring(name.length, c.length);
             }
         }
@@ -46,27 +44,24 @@ import React, {
             params.append('username', user);
             postReq(url,params).then(data => {
                 if(data) {
-                    console.log('imhere3')
                     const username = data.username;
-                    console.log(username)
                     if(username && username !== '') {
                         self.setState({redirect: true});
-                        console.log(self.state.redirect)
                     }
                 }
             }) 
     }
 
     checkLogin(user) {
-        if(user && user != '') {
+        if(user && user !== '') {
             this.checkUser(user);
         } else {
             user = sessionStorage.getItem("username");
-            if(user && user != '') {
+            if(user && user !== '') {
                 this.checkUser(user);
             } else {
                 user = this.getCookie('username');
-                if(user && user != '') {
+                if(user && user !== '') {
                     sessionStorage.setItem("username", user);
                     this.checkUser(user);
                 }
@@ -76,6 +71,7 @@ import React, {
   
     responseGoogle (res) {
         if(res) {
+            console.log(res);
             const email = res.w3.U3;
             if(email) {
                 sessionStorage.setItem("username", email);

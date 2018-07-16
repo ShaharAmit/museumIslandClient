@@ -1,0 +1,24 @@
+.cont > div:not(:nth-child(1)) {
+    width: 31.3vw;
+    height: 31.3vw;
+    display: inline-block;
+    text-align: center;
+    margin: 1%;
+}
+
+.cont > div > div {
+    width: 25vw;
+    height: 25vw;
+    margin: 0 auto;
+}
+
+.cont > div > div > a{
+    display: block;
+    width: 25vw;
+    height: 25vw;
+    margin: 0 auto;
+}
+
+p {
+    font-size: 1rem;
+}

@@ -1,7 +1,7 @@
 import React, {
     Component
 } from 'react'
-import './includes/newGalleries.css';
+import './includes/all.css';
 import { Link } from "react-router-dom";
 import { postReq } from '../services/httpsRequests';
 import Header from './headers/mainHeader'
@@ -60,7 +60,7 @@ class forYou extends Component {
 
     eachGallery(gallery, i) {
         return (
-            <div className='GalleriesCont'>
+            <div className={'GalleriesCont'+i}>
             <div style={{
               background: "url("+gallery.picture+") center no-repeat",
               backgroundSize: 'contain',

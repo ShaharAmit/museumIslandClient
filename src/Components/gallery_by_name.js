@@ -65,7 +65,7 @@ import {checkLogin} from '../services/checkLoggedIn'
 
     eachGallery(gallery, i) {
         return (
-            <div className='GalleriesCont'>
+            <div className={'GalleriesCont'+i}>
                 <div style={{
                 background: "url("+gallery.picture+") center no-repeat",
                 backgroundSize: 'contain',
@@ -73,14 +73,13 @@ import {checkLogin} from '../services/checkLoggedIn'
                 }}>
                 </div>
                 <p> 
-                <b>{gallery.gallery_name}</b > 
+                    <b>{gallery.gallery_name}</b > 
                 </p> 
           </div>
         )
     }
 
     update(update,data) {
-        console.log(data);
         const self = this;
         data.map((image) => {
             self.add(image);

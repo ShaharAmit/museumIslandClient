@@ -1,7 +1,7 @@
 import React, {
   Component
 } from 'react'
-import './includes/newGalleries.css';
+import './includes/all.css';
 import { Link } from "react-router-dom";
 import { getReq } from '../services/httpsRequests';
 import Header from './headers/mainHeader'
@@ -43,7 +43,6 @@ class newGalleries extends Component {
     getReq(url).then((dataObj) => {
       if(dataObj) {
         dataObj.map((gallery) => {
-          console.log(gallery);
           self.add(gallery);
           return true;
         });
@@ -57,7 +56,7 @@ class newGalleries extends Component {
 
   eachGallery(gallery, i) {
     return ( 
-      <div className='GalleriesCont'>
+      <div>
         <div style={{
           background: "url("+gallery.picture+") center no-repeat",
           backgroundSize: 'contain',

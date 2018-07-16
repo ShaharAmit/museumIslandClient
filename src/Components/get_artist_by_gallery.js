@@ -58,7 +58,7 @@ import {checkLogin} from '../services/checkLoggedIn'
 
     eachGallery(data, i) {
         return (
-            <div className='GalleriesCont'>
+            <div className={'GalleriesCont'+i}>
             <div style={{
               background: "url("+data.picture+") center no-repeat",
               backgroundSize: 'contain',

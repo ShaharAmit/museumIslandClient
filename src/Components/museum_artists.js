@@ -1,5 +1,5 @@
 import React from 'react';
-import './includes/museum_artist.css';
+import './includes/all.css';
 import { Link } from "react-router-dom";
 import { getReq } from '../services/httpsRequests';
 import Header from './headers/museumHeader'
@@ -47,10 +47,11 @@ export default class museumArtists extends React.Component {
                 const data = dataObj.galleries;
                 data.map((gallery) => {
                     const artistUrl = `https://museumisland45623.herokuapp.com/get_artist/`+gallery;
-                    getReq(artistUrl).then(artistsObj =>  {
+                    getReq(artistUrl).then(artistsObj => {
                         if(artistsObj) {
                             artistsObj.map((artist) => {
                                 self.add(gallery,artist);
+                                return true;
                             })
                         }
                     

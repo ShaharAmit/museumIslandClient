@@ -1,7 +1,7 @@
 import React, {
     Component
   } from 'react'
-  import './includes/newsByGenre.css';
+  import './includes/all.css';
   import { Link } from "react-router-dom";
   import { getReq } from '../services/httpsRequests';
   import Header from './headers/mainHeader'
@@ -60,13 +60,13 @@ class newsByGenre extends Component {
   
     eachArticle(article, i) {
       return ( 
-        <div className='articlesCont'>
+        <div className={'articlesCont'+i}>
           <div style={{
             background: "url("+article.picture+") center no-repeat",
             backgroundSize: 'contain',
             border: 'none',
           }}>
-            <Link to={"/article_by_name/"+article.article_name+'/'+article.author} />
+            <Link to={"/article_by_na/"+article.article_name+'/'+article.author} />
           </div>
           <p> 
             <b>{article.article_name}</b > 
