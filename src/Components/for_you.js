@@ -78,7 +78,7 @@ class forYou extends Component {
     render() {
         return (
             <div className = "cont" >
-              <Header />
+              <Header content='for you'/>
                 { this.state.newGalleries.map(this.eachGallery) }
             </div >
         )

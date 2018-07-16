@@ -64,6 +64,7 @@ import {checkLogin} from '../services/checkLoggedIn'
     }
 
     eachGallery(gallery, i) {
+        console.log(gallery);
         return (
             <div className={'GalleriesCont'+i}>
                 <div style={{
@@ -72,9 +73,6 @@ import {checkLogin} from '../services/checkLoggedIn'
                 border: 'none',
                 }}>
                 </div>
-                <p> 
-                    <b>{gallery.gallery_name}</b > 
-                </p> 
           </div>
         )
     }
@@ -90,7 +88,7 @@ import {checkLogin} from '../services/checkLoggedIn'
     render() {
       return ( 
         <div className='cont'>
-            <Header selected='1' gallery={this.gallery} />
+            <Header content={this.gallery} gallery={this.gallery} />
             { this.state.newGalleries.map(this.eachGallery) }
             <SeeMore gallery={this.gallery} username={this.username} onChange={this.update} />
         </div >

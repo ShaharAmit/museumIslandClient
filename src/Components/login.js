@@ -4,6 +4,7 @@ import React, {
   import { Redirect } from 'react-router-dom'
   import { GoogleLogin } from 'react-google-login';
   import { postReq } from '../services/httpsRequests'; 
+  import './includes/login.css';
 
   class newGalleries extends Component {
     constructor(props) {
@@ -88,7 +89,7 @@ import React, {
         }
 
         return ( 
-            <div className = "cont" > 
+            <div className = "loginCont" > 
                 <GoogleLogin
                     clientId="937053336005-lsrv8qmolfp010k9f1uudqngc3c0b8n7.apps.googleusercontent.com"
                     buttonText="Login"

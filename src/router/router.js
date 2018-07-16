@@ -27,7 +27,7 @@ const ReactRouter =()=>{
             <Route  path="/museum_artists/:gallery" component={museumArtists} />
             <Route  path="/get_items_by_gallery/:gallery_name" component={getItems} />
             <Route  path="/news_by_genre" component={newsByGenre} />
-            <Route  path="/article_by_name/:name/:author" component={ArticleByNA} />
+            <Route  path="/article_by_na/:name/:author" component={ArticleByNA} />
             <Route  path="/profile" component={Profile} />
         </React.Fragment>
     );}

@@ -1,9 +1,13 @@
 #root {
-  font-family:Verdana;
+  font-family:Verdana; 
+  height: 100%;
+  width: 100%;
 }
 
-body {
+html,body {
   margin: 0 auto;
   padding: 0;
+  height: 100%;
+  width: 100%;
   font-family: sans-serif;
 }

@@ -39,7 +39,7 @@ class Profile extends Component {
     render() {
       return ( 
         <div className = "cont" > 
-          <Header />
+          <Header conent='profile'/>
           
         </div >
       )

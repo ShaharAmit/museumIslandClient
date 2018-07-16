@@ -5,6 +5,8 @@ import { getReq } from '../services/httpsRequests'
 import Header from './headers/museumHeader'
 import { checkLogin } from '../services/checkLoggedIn';
 import BuyItem from './secondery/buy_item'
+import './includes/items.css';
+
   
   class getItems extends Component {
     constructor(props) {

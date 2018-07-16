@@ -1,9 +1,17 @@
+.cont {   
+   background-color: #ddd;
+   height: 100%;
+   width: 100%; 
+}
+
 .cont > div:not(:nth-child(1)) {
     width: 31.3vw;
-    height: 31.3vw;
-    display: inline-block;
+    height: 36vw;
+    float: left;
     text-align: center;
     margin: 1%;
+    background-color: #eee;
+    border-radius: 10%;
 }
 
 .cont > div > div {
@@ -21,4 +29,10 @@
 
 p {
     font-size: 1rem;
+}
+
+.seeMore {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

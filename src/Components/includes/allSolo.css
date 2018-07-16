@@ -1,0 +1,20 @@
+.cont > :nth-child(1) {
+    margin: 0 0 5px 0;
+}
+.contai {
+    margin: 0 auto;
+    width: 70vw;
+    height: 40vw;
+    display: block;
+    margin: 0 auto !important;
+    float: none !important;
+}
+
+.contai > div {
+    width: 70vw;
+    height: 40vw;
+    background-color: #eee;
+    display: block;
+    background-size: contain !important;
+}
+

@@ -86,11 +86,9 @@ export default class museumArtists extends React.Component {
         return (
             <div className='cont'> 
                 <Header selected='2' gallery={this.gallery} />
-                <div className="museumItems">
                     {
                         this.state.artists.map((this.artists))
                     }
-                </div>
             </div>
         )
     }

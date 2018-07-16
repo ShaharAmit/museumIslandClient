@@ -46,11 +46,7 @@ class newGalleries extends Component {
           self.add(gallery);
           return true;
         });
-      } else {
-        //think of an error
       }
-    }).catch(err => {
-      //think of an error
     })
   }
 
@@ -74,7 +70,7 @@ class newGalleries extends Component {
   render() {
     return ( 
       <div className = "cont" > 
-        <Header />
+        <Header content='home'/>
         { this.state.newGalleries.map(this.eachGallery) } 
       </div >
     )

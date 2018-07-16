@@ -2,12 +2,12 @@ import React, {
     Component
   } from 'react'
 import { postReq } from '../services/httpsRequests'
+import './includes/solo.css';
   
 class ArticleByNA extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            articles: []
         }
         this.add = this.add.bind(this)
         this.nextID = this.nextID.bind(this)
@@ -17,18 +17,13 @@ class ArticleByNA extends Component {
     }
 
     add(article) {
-        this.setState(prevState => ({
-            artists: [
-                ...prevState.artists,
-                {
+        this.setState({
                     id: this.nextID(),
                     picture: article.picture,
                     article_name: article.article_name,
                     author: article.author,
-                    content: article.content
-                }
-            ]            
-        }))
+                    content: article.content       
+        })
     }
 
     nextID() {
@@ -37,46 +32,38 @@ class ArticleByNA extends Component {
     }
 
     componentDidMount() {
-        console.log('imhere')
         const url = 'https://museumisland45623.herokuapp.com/article',
         params = new URLSearchParams(),
         self = this;
         params.append('username', this.username);
         params.append('article', this.article);
         params.append('author', this.author);
-        console.log(this.username,this.article,this.author)
         postReq(url,params).then(dataObj => {
             if(dataObj) {
-                dataObj.map((data) => {
-                    if(data)
-                        self.add(data);
-                    return true;
-                });
-            } else {
+                console.log(dataObj)
+                self.add(dataObj);
             }
         })
     }
-
-    eachGallery(data, i) {
-        return (
-            <div className={'GalleriesCont'+i}>
+  
+    render() {
+      return ( 
+        <div className='conti'>
             <div style={{
-              background: "url("+data.picture+") center no-repeat",
+              background: "url("+this.state.picture+") center no-repeat",
               backgroundSize: 'contain',
               border: 'none',
             }}>
             </div>
             <p> 
-              <b>{data.name}</b > 
+                <b>{this.state.article_name}</b > 
             </p> 
-          </div>
-        )
-    }
-  
-    render() {
-      return ( 
-        <div className='cont'>
-            { this.state.articles.map(this.eachGallery) }
+            <p> 
+                <b>{this.state.author}</b > 
+            </p> 
+            <p> 
+                {this.state.content} 
+            </p> 
         </div >
       )
     }

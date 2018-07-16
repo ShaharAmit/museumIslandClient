@@ -21,7 +21,7 @@ class Header extends Component {
             <div className="headerCont">
             <Link className="appIcon" to={this.home} />
             <Link to={'/profile'} className={'profile'}></Link>
-            <button onClick={this.logout}>Logout</button>
+            <button onClick={this.logout} className='logout'>Logout</button>
             </ div>
         );
     }

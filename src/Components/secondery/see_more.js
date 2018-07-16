@@ -82,13 +82,13 @@ class SeeMore extends Component {
     renderForm() {
         if(this.state.notPaid) {
             return (
-                <div>
+                <div className='seeMore'>
                 <button onClick={this.save}> pay now {this.price}$</button>
             </div>
             ) 
         } else {
             return (
-                <div></div>
+                <div style={{display: 'none'}}></div>
             )
         }
         }
@@ -96,7 +96,7 @@ class SeeMore extends Component {
     renderUI() {
         return (
             <div className='seeMore'>
-            <button onClick={this.seeMore}>see more</button>
+                <button onClick={this.seeMore}>see more</button>
             </div>
         )
     }

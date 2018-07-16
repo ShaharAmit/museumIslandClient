@@ -78,7 +78,7 @@ class newsByGenre extends Component {
     render() {
       return ( 
         <div className = "cont" > 
-          <Header />
+          <Header content='news'/>
           { this.state.newArticles.map(this.eachArticle) } 
         </div >
       )

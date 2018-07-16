@@ -60,6 +60,7 @@ export default class museum extends React.Component {
     }
 
     exhibitions(exhibition,i) {
+        console.log(exhibition)
         return (
             <div className='ExhibitionsCont'>
                 <div style={{
@@ -80,11 +81,7 @@ export default class museum extends React.Component {
         return (
             <div className='cont'> 
                 <Header selected='1' gallery={this.gallery} />
-                <div className="museumItems">
-                    {
-                        this.state.exhibitions.map((this.exhibitions))
-                    }
-                </div>
+                {this.state.exhibitions.map((this.exhibitions))}
             </div>
         )
     }
