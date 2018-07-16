@@ -1,9 +1,9 @@
 import React from 'react';
-import axios from 'axios';
 import './includes/museum_artist.css';
 import { Link } from "react-router-dom";
-import { getReq } from './httpsRequests';
-import Header from './museumHeader'
+import { getReq } from '../services/httpsRequests';
+import Header from './headers/museumHeader'
+import { checkLogin } from '../services/checkLoggedIn';
 
 
 export default class museumArtists extends React.Component {
@@ -15,6 +15,7 @@ export default class museumArtists extends React.Component {
         this.add = this.add.bind(this)
         this.nextID = this.nextID.bind(this)
         this.gallery = this.props.match.params.gallery;
+        checkLogin();
     }
 
     add(gallery, artist) {

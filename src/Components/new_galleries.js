@@ -3,8 +3,9 @@ import React, {
 } from 'react'
 import './includes/newGalleries.css';
 import { Link } from "react-router-dom";
-import { getReq } from './httpsRequests';
-import Header from './mainHeader'
+import { getReq } from '../services/httpsRequests';
+import Header from './headers/mainHeader'
+import { checkLogin } from '../services/checkLoggedIn';
 
 class newGalleries extends Component {
   constructor(props) {
@@ -13,9 +14,9 @@ class newGalleries extends Component {
       newGalleries: []
     }
     this.add = this.add.bind(this)
-    this.moveToGallery = this.moveToGallery.bind(this)
     this.nextID = this.nextID.bind(this)
     this.eachGallery = this.eachGallery.bind(this)
+    checkLogin();
   }
 
   add(gallery) {
@@ -52,10 +53,6 @@ class newGalleries extends Component {
     }).catch(err => {
       //think of an error
     })
-  }
-
-  moveToGallery(gallerieName) {
-    // browserHistory.push('/gallery_by_name/'+gallerieName)
   }
 
   eachGallery(gallery, i) {

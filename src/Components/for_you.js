@@ -3,8 +3,10 @@ import React, {
 } from 'react'
 import './includes/newGalleries.css';
 import { Link } from "react-router-dom";
-import { postReq } from './httpsRequests';
-import Header from './mainHeader'
+import { postReq } from '../services/httpsRequests';
+import Header from './headers/mainHeader'
+import {checkLogin} from '../services/checkLoggedIn'
+
 
 
 class forYou extends Component {
@@ -16,6 +18,7 @@ class forYou extends Component {
         this.add = this.add.bind(this)
         this.nextID = this.nextID.bind(this)
         this.username = sessionStorage.getItem("username");
+        checkLogin();
     }
 
     add(gallery) {

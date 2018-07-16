@@ -1,0 +1,18 @@
+.articlesCont {
+    width: 31.3vw;
+    height: 31.3vw;
+    display: inline-block;
+    text-align: center;
+    margin: 1%;
+}
+
+.articlesCont > div {
+    width: 28vw;
+    height: 28vw;
+}
+
+.articlesCont > div > a{
+    display: block;
+    width: 28vw;
+    height: 28vw;
+}

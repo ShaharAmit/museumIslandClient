@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import {Nav, NavItem} from "react-bootstrap"
-import '../Header.css';
+import '../../Header.css';
 
 class Header extends Component {
     navSelected = this.props.selected;
@@ -25,10 +25,9 @@ class Header extends Component {
     render() {
         return (
             <div className="headerCont">
-            <a className="appIcon" componentClass={Link} href={this.home} exact to={this.home} eventKey="1"></a>
             <h1>{this.content}</h1>
             <Nav bsStyle="tabs" activeKey={this.navSelected} onSelect={k => this.handleSelect(k)}>        
-                <NavItem eventKey="2" componentClass={Link} href="/news" to="/news">
+                <NavItem eventKey="2" componentClass={Link} href="/news_by_genre" to="/news_by_genre">
                     News
                 </NavItem>
                 <NavItem eventKey="3" componentClass={Link} href="/for_you" to="/for_you">

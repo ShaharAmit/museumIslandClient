@@ -1,8 +1,10 @@
 import React, {
     Component
   } from 'react'
-import { getReq, postReq } from './httpsRequests'
-import Header from './museumHeader'
+import { getReq, postReq } from '../services/httpsRequests'
+import Header from './headers/museumHeader'
+import { checkLogin } from '../services/checkLoggedIn';
+import BuyItem from './secondery/buy_item'
   
   class getItems extends Component {
     constructor(props) {
@@ -10,9 +12,12 @@ import Header from './museumHeader'
         this.state = {
             items: []
         }
+        this.username = sessionStorage.getItem("username");
         this.add = this.add.bind(this)
         this.nextID = this.nextID.bind(this)
         this.gallery = this.props.match.params.gallery_name;
+        this.eachItems = this.eachItems.bind(this);
+        checkLogin()
     }
 
     add(item) {
@@ -66,7 +71,8 @@ import Header from './museumHeader'
             </div>
             <p> 
               <b>{data.name}</b > 
-            </p> 
+            </p>
+            <BuyItem data={data} username={this.username} /> 
           </div>
         )
     }

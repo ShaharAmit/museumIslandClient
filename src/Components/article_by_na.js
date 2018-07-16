@@ -1,34 +1,33 @@
 import React, {
     Component
   } from 'react'
-import { getReq } from '../services/httpsRequests'
+import { postReq } from '../services/httpsRequests'
 import Header from './headers/exhibitionHeader'
-import {checkLogin} from '../services/checkLoggedIn'
 
   
-  class ArtistByGal extends Component {
+class ArticleByNA extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            artists: []
+            articles: []
         }
         this.add = this.add.bind(this)
         this.nextID = this.nextID.bind(this)
-        this.gallery = this.props.match.params.gallery_name;
-        checkLogin();
+        this.username = sessionStorage.getItem("username");
+        this.article = this.props.match.params.name;
+        this.author = this.props.match.params.author;
     }
 
-    add(data) {
+    add(article) {
         this.setState(prevState => ({
             artists: [
                 ...prevState.artists,
                 {
                     id: this.nextID(),
-                    picture: data.picture,
-                    about: data.about,
-                    name: data.name,
-                    museums: data.museums,
-                    galleries: data.galleries
+                    picture: article.picture,
+                    article_name: article.article_name,
+                    author: article.author,
+                    content: article.content
                 }
             ]            
         }))
@@ -40,19 +39,23 @@ import {checkLogin} from '../services/checkLoggedIn'
     }
 
     componentDidMount() {
-        const url = 'https://museumisland45623.herokuapp.com/get_artist/'+this.gallery,
+        console.log('imhere')
+        const url = 'https://museumisland45623.herokuapp.com/article',
+        params = new URLSearchParams(),
         self = this;
-        getReq(url).then(dataObj => {
+        params.append('username', this.username);
+        params.append('article', this.article);
+        params.append('author', this.author);
+        console.log(this.username,this.article,this.author)
+        postReq(url,params).then(dataObj => {
             if(dataObj) {
                 dataObj.map((data) => {
-                self.add(data);
-                return true;
+                    if(data)
+                        self.add(data);
+                    return true;
                 });
             } else {
-                //think of an error
             }
-        }).catch(err => {
-            //think of an error
         })
     }
 
@@ -75,10 +78,9 @@ import {checkLogin} from '../services/checkLoggedIn'
     render() {
       return ( 
         <div className='cont'>
-            <Header selected='2' gallery={this.gallery} />
-            { this.state.artists.map(this.eachGallery) }
+            { this.state.articles.map(this.eachGallery) }
         </div >
       )
     }
   }
-  export default ArtistByGal
+  export default ArticleByNA

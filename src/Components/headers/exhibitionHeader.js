@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import {Nav, NavItem} from "react-bootstrap"
-import '../Header.css';
+import '../../Header.css';
 
 class Header extends Component {
     navSelected = this.props.selected;
@@ -10,7 +10,6 @@ class Header extends Component {
     render() {
         return (
             <div className="headerCont">
-            <a className="appIcon" componentClass={Link} href={this.home} exact to={this.home} eventKey="1"></a>
             <h1>{this.content}</h1>
             <Nav bsStyle="tabs" activeKey={this.navSelected}>        
                 <NavItem eventKey="1" componentClass={Link} href={'/get_artist_by_gallery/'+this.gallery} exact to={'/museum/'+this.gallery}>
